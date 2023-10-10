@@ -1,6 +1,8 @@
 # Nelder-Mead C++
 A basic implementation of the Nelder Mead algorightm in C++.
 
+This project is maintained on GitLab at: https://gitlab.com/Litika/thebrutepublic/nelder-mead-cpp. Although it is mirrored on GitHub, if you wish to report issues or submit pull/merge requests, please do so on the GitLab link provided here.
+
 ## Overview
 
 Using this implementaiton of Nelder Mead is a two step process:
