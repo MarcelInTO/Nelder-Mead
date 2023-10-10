@@ -97,7 +97,6 @@ class NelderMead
         }
 
         void doInitialize(const std::vector<double>& start, double scale);
-        void doCentroid(uint32_t vg);
         void doIndexes();
 
     #if NELDER_MEAD_DEBUG

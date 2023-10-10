@@ -111,23 +111,6 @@ void NelderMead::doIndexes()
     }
 }
 
-
-void NelderMead::doCentroid(uint32_t vg)
-{
-    double cent;
-
-    for (uint32_t j = 0; j <= size - 1; j++) {
-        cent = 0.0;
-        for (uint32_t m = 0; m <= size; m++) {
-            if (m != vg) {
-                cent += v[m][j];
-            }
-        }
-        vm[j] = cent / size;
-    }
-}
-
-
 void NelderMead::exec(const std::vector<double> & start, double tolerancee, double scale)
 {
     double fr;      // value of function at reflection point
@@ -165,7 +148,16 @@ void NelderMead::exec(const std::vector<double> & start, double tolerancee, doub
         doIndexes();
 
         // calculate the centroid of the simplex
-        doCentroid(vg);
+        double cent;
+        for (uint32_t j = 0; j <= size - 1; j++) {
+            cent = 0.0;
+            for (uint32_t m = 0; m <= size; m++) {
+                if (m != vg) {
+                    cent += v[m][j];
+                }
+            }
+            vm[j] = cent / size;
+        }
 
         // reflect vg to new vertex vr. The reflection might need to be constrained.
         for (uint32_t j = 0; j <= size - 1; j++) {
