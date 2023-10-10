@@ -12,9 +12,9 @@ The first step allocates a solver instance that has all the necessary memory all
 
 By separating the actual minimization search into a separate step, we allow the caller to quickly redo the search using different starting points and execution parameters without having to perform any memory allocations or reallocations.
 
-In order to allocate and user a solver, the caller must provide a pointer to an evaluation function. This pointer is provied as a std::function object so that it can either be a plain function or a class method.
+In order to allocate and use a solver, the caller must provide a pointer to an evaluation function. This pointer is provied as a std::function object so that it can either be a plain function or a class method with an instance pointer.
 
-The call to the solver allows the caller to specify the starting point for the search, a scale variable to use for setting the size of the initial simplex, as well as the tolerance for the search
+The call to execute the solver allows the caller to specify the starting point for the search, a scale to use for setting the size of the initial simplex, as well as the tolerance for the search
 
 ```
         void exec(
@@ -24,7 +24,7 @@ The call to the solver allows the caller to specify the starting point for the s
         );
 ```
 
-The solver object provides methods to change several execution parameters after it has been allocated. This allows the caller to call exec many times, using different settings, without having to reallocate memory.
+The solver object provides methods to change several execution parameters after it has been allocated. This allows the caller to call exec() many times, using different settings, without having to reallocate memory.
 
 * Maximum number of iterations
 * Reflection coefficient
@@ -63,7 +63,7 @@ int main()
 }
 ```
 
-Note that the results of an exec() call on the solver are retrieved by calling the getLastExectResult() method. In this example there is a simple implementaiton of a routine that prints the output of those results:
+Note that the results of an exec() call on the solver are retrieved by calling the getLastExectResult() method. In this example there is a simple function that prints the output of those results:
 
 
 ```
